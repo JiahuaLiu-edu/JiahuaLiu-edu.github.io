@@ -1,7 +1,6 @@
 title: 华仔's 个人主页
 # Comment out url when working locally to resolve base urls correctly
-url: https://scp-jah.github.io/JiahuaLiu.edu.github.io
-
+url: https://JiahuaLiu-edu.github.io
 # Default social-share preview image (Open Graph / Twitter card). Lives in /images/.
 og_image: og-cover.jpg
 
@@ -10,7 +9,7 @@ owner:
   name: 刘家华 (James Liu)
   avatar: avatar.jpg
   email: JiahuaLiu_edu@foxmail.com
-  github: SCP-JAH
+  github: JiahuaLiu-edu
   bilibili: "https://space.bilibili.com/219525656?spm_id_from=333.1007.0.0"
 
 # Links to include in top navigation

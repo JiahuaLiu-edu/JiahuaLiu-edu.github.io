@@ -138,7 +138,7 @@ owner:
   name: 刘家华 (James Liu)
   avatar: avatar.jpg
   email: JiahuaLiu_edu@foxmail.com
-  github: SCP-JAH
+  github: JiahuaLiu-edu
   bilibili: "https://space.bilibili.com/219525656?spm_id_from=333.1007.0.0"
 ```
 
@@ -586,7 +586,7 @@ git push origin main
 网站仓库：
 
 ```text
-https://github.com/SCP-JAH/JiahuaLiu.edu.github.io
+https://github.com/JiahuaLiu-edu/JiahuaLiu-edu.github.io
 ```
 
 ## 15. 常见问题
