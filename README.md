@@ -1,107 +1,41 @@
-<div align="center">
+# 刘家华的个人主页
 
-<a href="https://larrysimingdeng.github.io">
-  <img src=".github/assets/banner.svg" alt="Siming Deng, personal academic website" width="100%">
-</a>
+这是刘家华（James Liu）的个人网站，主要记录在南开大学计算机学院的学习经历、研究兴趣、项目实践与个人生活。
 
-<a href="https://larrysimingdeng.github.io"><img alt="Live site" src="https://img.shields.io/badge/Live-larrysimingdeng.github.io-011F5B?style=flat-square&logo=githubpages&logoColor=white"></a>
-<img alt="Jekyll" src="https://img.shields.io/badge/Jekyll-4.2-990000?style=flat-square&logo=jekyll&logoColor=white">
-<img alt="Ruby" src="https://img.shields.io/badge/Ruby-3.3-011F5B?style=flat-square&logo=ruby&logoColor=white">
-<a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-990000?style=flat-square"></a>
+## 页面
 
-</div>
-
-## Overview
-
-This repository contains the source of [larrysimingdeng.github.io](https://larrysimingdeng.github.io), the personal website of **Siming Deng (Larry Deng)**, graduate student at the [Department of Electrical and Systems Engineering](https://www.ese.upenn.edu/), [Penn Engineering](https://www.seas.upenn.edu/), University of Pennsylvania. His work sits at the intersection of AI agents, AI infrastructure, ML systems, and statistics.
-
-| Page | Route | Content |
+| 页面 | 路径 | 内容 |
 |---|---|---|
-| About Me | `/` | Bio and research focus, news grid, work-experience timeline |
-| Publications | `/publications/` | Peer-reviewed papers with covers and links |
-| Beyond Research | `/hobbies/` | Life outside the lab |
+| 关于我 | `/` | 个人简介、研究方向与经历 |
+| 学习 Plog | `/plogs/` | 图片与简短学习记录 |
+| 生活之外 | `/hobbies/` | 兴趣与校园生活 |
 
-## Preview
+## 技术栈
 
-<table>
-  <tr>
-    <td width="50%"><img src=".github/assets/preview-light.png" alt="Homepage in light mode"></td>
-    <td width="50%"><img src=".github/assets/preview-dark.png" alt="Homepage in dark mode"></td>
-  </tr>
-  <tr>
-    <td align="center"><sub>Light</sub></td>
-    <td align="center"><sub>Dark</sub></td>
-  </tr>
-</table>
+网站使用 Jekyll 4.2 构建，前端由 HTML、CSS 和原生 JavaScript 实现，并通过 GitHub Pages 发布。页面支持响应式布局、深色模式、时间线与滚动动画。
 
-## Design
-
-- **UPenn-style header.** Two-tier sticky header with a frosted-glass blur and an oversized Penn wordmark.
-- **Dark mode.** One-click toggle that follows the system preference and is remembered across visits.
-- **Living timeline.** Entries light up as they scroll into view; the current role carries a Penn-red pulse.
-- **Scroll-reveal cards.** News and publication cards fade in as they enter the viewport.
-- **Deliberate typography.** System sans for display, PT Serif for long-form reading.
-- **Mobile-tuned.** Responsive layout with a compact fixed header and touch-friendly cards.
-- **No frameworks.** Plain HTML, CSS and JavaScript on top of Jekyll.
-
-The site uses the official Penn palette: Penn Blue for structure (headings, links, the timeline) and Penn Red as a scarce accent (the heading underline, the current-role pulse). Dark mode swaps in lighter tints of both to preserve contrast.
-
-<img src=".github/assets/palette.svg" alt="Palette: Penn Blue #011F5B, Penn Red #990000, Sky Blue #6EA8FF, Signal Red #E5484D" width="100%">
-
-## Deployment
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/pipeline-dark.svg">
-  <img src=".github/assets/pipeline-light.svg" alt="Pipeline: content written in Markdown, built by Jekyll, deployed by GitHub Pages, served to the visitor" width="100%">
-</picture>
-
-Edit Markdown, push to `main`, and GitHub Pages rebuilds and publishes the site, usually within a minute.
-
-## Local development
-
-Requires Ruby 3.3 (see `.ruby-version`) and Bundler.
+## 本地运行
 
 ```bash
-git clone https://github.com/LarrySimingDeng/larrysimingdeng.github.io.git
-cd larrysimingdeng.github.io
-
 bundle install
 bundle exec jekyll serve --livereload
-# http://127.0.0.1:4000
 ```
 
-> [!TIP]
-> Comment out the `url:` field in `_config.yml` while previewing locally so absolute URLs resolve to `localhost` instead of production.
+本地预览地址：`http://127.0.0.1:4000`。
 
-## Project structure
+## 主要文件
 
-```
-.
-├── _config.yml        # site title, owner info, top navigation
-├── _includes/         # head, footer and shared partials
-├── _layouts/          # page template, theme toggle, timeline logic
-├── assets/
-│   ├── css/main.css   # palette, header, timeline, dark mode styles
-│   └── js/            # interactions and vendor scripts
-├── images/            # photos, logos, paper thumbnails
-├── index.md           # About Me: bio, news, experience timeline
-├── publications.md    # publication cards
-└── hobbies.md         # Beyond Research
-```
-
-## Customization
-
-Everything personal sits in a handful of files:
-
-| What | Where |
+| 文件 | 用途 |
 |---|---|
-| Name, avatar, email, social links | `_config.yml`, `owner:` section |
-| Top navigation | `_config.yml`, `links:` section |
-| Bio, news, experience timeline | `index.md` |
-| Publications | `publications.md` |
-| Photos and thumbnails | `images/` |
-| Colors, typography, animations | `assets/css/main.css` |
+| `_config.yml` | 网站标题、作者信息和导航配置 |
+| `index.md` | 首页内容 |
+| `plogs.md` | 学习 Plog 卡片列表页 |
+| `_plogs/` | 每篇 Plog 的 Markdown 内容 |
+| `_layouts/plog.html` | Plog 详情页布局 |
+| `hobbies.md` | 生活之外页面 |
+| `_layouts/page.html` | 通用页面布局与页眉 |
+| `assets/css/main.css` | 网站样式与深色模式 |
 
 ## License
 
-Code is released under the [MIT License](LICENSE). Site content (text, photos and publication material) © Siming Deng.
+网站代码遵循 [MIT License](LICENSE)。

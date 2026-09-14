@@ -1,0 +1,41 @@
+---
+layout: page
+---
+
+<article class="plog-entry">
+  <a class="plog-entry__back" href="{{ site.url }}/plogs/">返回学习 Plog</a>
+
+  <header class="plog-entry__header">
+    <div class="plog-entry__meta">
+      <span>{{ page.category }}</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>
+    </div>
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.summary }}</p>
+    {% if page.tags %}
+    <div class="plog-entry__tags" aria-label="标签">
+      {% for tag in page.tags %}<span>#{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  {% if page.cover %}
+  <figure class="plog-entry__cover{% if page.cover_fit == 'contain' %} plog-entry__cover--contain{% endif %}">
+    <img src="{{ site.url }}{{ page.cover }}" alt="{{ page.cover_alt | default: page.title }}">
+  </figure>
+  {% endif %}
+
+  <div class="plog-entry__content">
+    {{ content }}
+  </div>
+
+  {% if page.external_url %}
+  <a class="plog-entry__external" href="{{ page.external_url | escape }}" target="_blank" rel="noopener">
+    查看完整技术文章 <span aria-hidden="true">↗</span>
+  </a>
+  {% endif %}
+
+  <footer class="plog-entry__footer">
+    <a href="{{ site.url }}/plogs/">继续浏览学习记录</a>
+  </footer>
+</article>

@@ -1,31 +1,31 @@
-title: Siming Deng
+title: 华仔's 个人主页
 # Comment out url when working locally to resolve base urls correctly
-url: https://larrysimingdeng.github.io
+url: https://scp-jah.github.io/JiahuaLiu.edu.github.io
 
 # Default social-share preview image (Open Graph / Twitter card). Lives in /images/.
 og_image: og-cover.jpg
 
 # Owner/author information
 owner:
-  name: Siming Deng
+  name: 刘家华 (James Liu)
   avatar: avatar.jpg
-  email: siming_deng_stat@163.com
-  github: LarrySimingDeng
-  linkedin: larry-deng-317b92360
-  scholar: https://scholar.google.com/citations?hl=en&user=aKyLtgsAAAAJ
-  researchgate: https://www.researchgate.net/profile/Siming-Deng-3
-
-# https://search.google.com/search-console/ownership
-google_verify: "SkiyuGpJOKT74vv5GmXLvYXXDkXy4v8VWPtbelYz3Hs"
+  email: JiahuaLiu_edu@foxmail.com
+  github: SCP-JAH
+  bilibili: "https://space.bilibili.com/219525656?spm_id_from=333.1007.0.0"
 
 # Links to include in top navigation
 links:
   - title: About Me
     url: /
-  - title: Publications
-    url: /publications/
-  - title: Beyond Research
+  - title: My Plogs
+    url: /plogs/
+  - title: Beyond Study
     url: /hobbies/
+
+collections:
+  plogs:
+    output: true
+    permalink: /plogs/:name/
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone: China/Beijing

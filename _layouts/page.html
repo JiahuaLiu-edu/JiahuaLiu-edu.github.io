@@ -2,21 +2,10 @@
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="cn"><!--<![endif]-->
 
 <head>
 {% include head.html %}
-
-<script src="https://cdn.counter.dev/script.js" data-id="4c8f7caa-2b55-46cd-a995-2c4633303773" data-utcoffset="8"></script>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-T5N5JY1E21"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-T5N5JY1E21');
-</script>
 
 <style>
   /* ============================================
@@ -109,18 +98,18 @@
     height: 0;
   }
 
-  /* UPenn-style header: oversized logo row on top, name + nav row below.
+  /* Nankai-style header: oversized logo row on top, name + nav row below.
      Rides above the three decorative glass layers. */
   .header-container {
     position: relative;
     z-index: 3;
     display: flex;
     flex-direction: column;
-    padding: 8px 40px 0;
+    padding: 8px 40px 10px;
     background: transparent;
   }
 
-  /* Row 1: oversized Penn logo (far left) + theme toggle (far right) */
+  /* Row 1: oversized Nankai logo (far left) + theme toggle (far right) */
   .header-top {
     display: flex;
     align-items: center;
@@ -164,35 +153,92 @@
   }
 
   .header-nav {
-    display: flex;
-    align-items: center;
-  }
-  .header-nav a {
-    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #333332;
-    text-decoration: none;
-    border: 0;
-    transition: color 0.2s ease;
+    position: relative;
+    isolation: isolate;
     display: inline-flex;
     align-items: center;
+    gap: 4px;
+    width: fit-content;
+    padding: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.74);
+    border-radius: 16px;
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.32)),
+      rgba(238, 239, 243, 0.58);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.92),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.04),
+      0 5px 18px rgba(22, 29, 45, 0.08);
+    -webkit-backdrop-filter: blur(22px) saturate(165%);
+    backdrop-filter: blur(22px) saturate(165%);
   }
-  /* Slash separators between tabs (UPenn-style) */
-  .header-nav a:not(:last-child)::after {
-    content: "/";
-    margin: 0 16px;
-    color: rgba(0, 0, 0, 0.28);
-    font-weight: 400;
+  .header-nav::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.4), transparent 38%);
+    pointer-events: none;
   }
-  .header-nav a:hover,
+  .header-nav a {
+    position: relative;
+    z-index: 1;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    min-height: 42px;
+    padding: 0 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: #3b3b40;
+    text-decoration: none;
+    border: 0;
+    white-space: nowrap;
+    transition:
+      color 0.22s ease,
+      background-color 0.22s ease,
+      box-shadow 0.22s ease,
+      transform 0.16s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-nav a:hover {
+    color: #780000;
+    background: rgba(255, 255, 255, 0.42);
+  }
   .header-nav a.is-current {
     color: #990000;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.98),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.04),
+      0 2px 7px rgba(21, 27, 38, 0.14);
+    animation: nav-pill-settle 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .header-nav a:active {
+    transform: scale(0.97);
+  }
+  .header-nav a:focus-visible {
+    outline: 2px solid rgba(153, 0, 0, 0.72);
+    outline-offset: 1px;
+  }
+  @keyframes nav-pill-settle {
+    from { opacity: 0.64; transform: scale(0.94); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .header-nav a {
+      transition: none;
+    }
+    .header-nav a.is-current {
+      animation: none;
+    }
   }
 
-  /* Header social links (GitHub · Scholar · LinkedIn · Email) */
+  /* Header social links */
   .header-social {
     display: flex;
     align-items: center;
@@ -216,6 +262,12 @@
   .header-social__link i {
     display: block;
     line-height: 1;
+  }
+  .header-social__icon {
+    width: 23px;
+    height: 23px;
+    display: block;
+    fill: currentColor;
   }
 
   /* Profile avatar (far right, after the theme toggle) */
@@ -249,10 +301,10 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
     .header-spacer {
-      height: 108px;
+      height: 144px;
     }
     .header-container {
-      padding: 8px 16px 0;
+      padding: 8px 16px;
     }
     .logo {
       height: 54px;
@@ -262,6 +314,9 @@
       margin-top: 6px;
       padding: 8px 0;
     }
+    .header-nav {
+      width: 100%;
+    }
     .header-social {
       display: none;
     }
@@ -269,21 +324,21 @@
       display: none;
     }
     .header-nav a {
-      font-size: 12px;
-      letter-spacing: 0.04em;
-    }
-    .header-nav a:not(:last-child)::after {
-      margin: 0 10px;
+      flex: 1 1 0;
+      min-width: 0;
+      min-height: 42px;
+      padding: 0 10px;
+      font-size: 13px;
     }
   }
 
   /* 超小屏幕适配 */
   @media (max-width: 480px) {
     .header-spacer {
-      height: 100px;
+      height: 124px;
     }
     .header-container {
-      padding: 8px 14px 0;
+      padding: 8px 14px;
     }
     .logo {
       height: 42px;
@@ -293,11 +348,9 @@
       padding: 7px 0;
     }
     .header-nav a {
-      font-size: 11px;
-      letter-spacing: 0.03em;
-    }
-    .header-nav a:not(:last-child)::after {
-      margin: 0 7px;
+      min-height: 40px;
+      padding: 0 5px;
+      font-size: 12px;
     }
     /* 减小导航栏和内容之间的间距 */
     #main {
@@ -305,7 +358,7 @@
     }
   }
 
-  /* Mobile portrait: pin the Penn logo to the far right */
+  /* Mobile portrait: pin the Nankai logo to the far right */
   @media (max-width: 480px) and (orientation: portrait) {
     .header-actions {
       display: none;
@@ -313,6 +366,38 @@
     .header-logo {
       margin-left: auto;
     }
+  }
+
+  [data-theme="dark"] .header-nav {
+    border-color: rgba(255, 255, 255, 0.14);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035)),
+      rgba(18, 20, 27, 0.48);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+      0 7px 22px rgba(0, 0, 0, 0.22);
+  }
+  [data-theme="dark"] .header-nav::before {
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0.11), transparent 42%);
+  }
+  [data-theme="dark"] .header-nav a {
+    color: #d9d9df;
+  }
+  [data-theme="dark"] .header-nav a:hover {
+    color: #f5f7ff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  [data-theme="dark"] .header-nav a.is-current {
+    color: #a9c8ff;
+    background: rgba(255, 255, 255, 0.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+      0 3px 9px rgba(0, 0, 0, 0.28);
+  }
+  [data-theme="dark"] .header-nav a:focus-visible {
+    outline-color: #8db8ff;
   }
 
   /* ============================================
@@ -548,7 +633,7 @@
     <div class="glass-specular" aria-hidden="true"></div>
     <div class="header-container">
 
-      <!-- Row 1: oversized Penn logo (far left) · theme toggle (far right) -->
+      <!-- Row 1: oversized Nankai logo (far left) and theme toggle (far right) -->
       <div class="header-top">
         <!-- Mobile avatar with expandable contact menu (mobile portrait only) -->
         <div class="mobile-avatar-wrapper">
@@ -559,17 +644,32 @@
         </div>
 
         <a class="header-logo" href="{{ site.url }}" aria-label="{{ site.owner.name }}">
-          <img src="/images/penn-logo.png" class="logo logo--light" alt="University of Pennsylvania">
-          <img src="/images/penn-logo-reverse.png" class="logo logo--dark" alt="University of Pennsylvania">
+          <img src="{{ site.url }}/images/nk-logo.png" class="logo logo--light" alt="南开大学">
+          <img src="{{ site.url }}/images/nk-logo-reverse.png" class="logo logo--dark" alt="南开大学">
         </a>
 
         <div class="header-actions">
           <div class="header-social">
+            {% if site.owner.email %}
             <a class="header-social__link" href="mailto:{{ site.owner.email }}" target="_blank" rel="noopener" aria-label="Email" title="Email"><i class="icon-mail" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if site.owner.linkedin %}
             <a class="header-social__link" href="https://linkedin.com/in/{{ site.owner.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><i class="icon-linkedin" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if site.owner.github %}
             <a class="header-social__link" href="https://github.com/{{ site.owner.github }}" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><i class="icon-github" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if site.owner.bilibili %}
+            <a class="header-social__link" href="{{ site.owner.bilibili | escape }}" target="_blank" rel="noopener" aria-label="Bilibili" title="Bilibili">
+              <svg class="header-social__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.813 4.653h.854A2.733 2.733 0 0 1 21.4 7.387v10.026a2.733 2.733 0 0 1-2.733 2.734H5.333A2.733 2.733 0 0 1 2.6 17.413V7.387a2.733 2.733 0 0 1 2.733-2.734h.854L4.71 3.176a.8.8 0 0 1 1.13-1.132l2.61 2.609h7.1l2.61-2.61a.8.8 0 0 1 1.13 1.133l-1.477 1.477ZM5.333 6.253A1.134 1.134 0 0 0 4.2 7.387v10.026c0 .626.507 1.134 1.133 1.134h13.334c.626 0 1.133-.508 1.133-1.134V7.387c0-.627-.507-1.134-1.133-1.134H5.333Zm3.2 3.2a.8.8 0 0 1 .8.8v2.134a.8.8 0 0 1-1.6 0v-2.134a.8.8 0 0 1 .8-.8Zm6.934 0a.8.8 0 0 1 .8.8v2.134a.8.8 0 0 1-1.6 0v-2.134a.8.8 0 0 1 .8-.8Z"/></svg>
+            </a>
+            {% endif %}
+            {% if site.owner.scholar %}
             <a class="header-social__link" href="{{ site.owner.scholar }}" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if site.owner.researchgate %}
             <a class="header-social__link" href="{{ site.owner.researchgate }}" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate"><i class="ai ai-researchgate" aria-hidden="true"></i></a>
+            {% endif %}
           </div>
           <!-- Dark mode toggle (desktop only; mobile uses the contact panel toggle) -->
           <div class="theme-toggle-wrapper theme-toggle-wrapper--header">
@@ -604,7 +704,7 @@
         <nav class="header-nav" role="navigation" aria-label="Primary" itemscope itemtype="http://schema.org/SiteNavigationElement">
           {% capture url %}{{ page.url | remove:'index.html' }}{% endcapture %}
           {% for link in site.links %}
-          <a href="{{ site.url }}{{ link.url }}"{% if url == link.url %} class="is-current"{% endif %}>{{ link.title }}</a>
+          <a href="{{ site.url }}{{ link.url }}"{% if url == link.url %} class="is-current" aria-current="page"{% endif %}>{{ link.title }}</a>
           {% endfor %}
         </nav>
       </div>
@@ -655,6 +755,12 @@
       {% if site.owner.github %}
       <a href="https://github.com/{{ site.owner.github }}" target="_blank" class="mobile-contact-item">
         <i class="icon-github"></i><span>GitHub</span>
+      </a>
+      {% endif %}
+      {% if site.owner.bilibili %}
+      <a href="{{ site.owner.bilibili | escape }}" target="_blank" rel="noopener" class="mobile-contact-item">
+        <svg class="contact-icon-svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.813 4.653h.854A2.733 2.733 0 0 1 21.4 7.387v10.026a2.733 2.733 0 0 1-2.733 2.734H5.333A2.733 2.733 0 0 1 2.6 17.413V7.387a2.733 2.733 0 0 1 2.733-2.734h.854L4.71 3.176a.8.8 0 0 1 1.13-1.132l2.61 2.609h7.1l2.61-2.61a.8.8 0 0 1 1.13 1.133l-1.477 1.477ZM5.333 6.253A1.134 1.134 0 0 0 4.2 7.387v10.026c0 .626.507 1.134 1.133 1.134h13.334c.626 0 1.133-.508 1.133-1.134V7.387c0-.627-.507-1.134-1.133-1.134H5.333Zm3.2 3.2a.8.8 0 0 1 .8.8v2.134a.8.8 0 0 1-1.6 0v-2.134a.8.8 0 0 1 .8-.8Zm6.934 0a.8.8 0 0 1 .8.8v2.134a.8.8 0 0 1-1.6 0v-2.134a.8.8 0 0 1 .8-.8Z"/></svg>
+        <span>Bilibili</span>
       </a>
       {% endif %}
       {% if site.owner.scholar %}
