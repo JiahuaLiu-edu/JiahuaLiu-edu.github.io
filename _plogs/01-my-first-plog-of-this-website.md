@@ -1,5 +1,6 @@
 ---
 layout: plog
+permalink: /plogs/my-first-plog-of-this-website/
 title: 迎接时代的浪潮：我的建站Plog
 date: 2026-09-13
 category: 技术边界
@@ -8,8 +9,8 @@ tags:
   - 感悟思考
 cover: /images/plogs/01-codex-cover.png
 cover_alt: OpenAI的Codex产品界面
-cover_shape: wide ##这里可以选择square wide tall
-##cover_fit: contain
+cover_shape: wide # 可选：square、wide、tall
+# cover_fit: contain
 summary: 简要谈谈我的建站原因和实践流程。
 ---
 
