@@ -1,6 +1,6 @@
 ---
 layout: plog
-permalink: /plogs/my-first-plog-of-this-website/
+permalink: /plogs/01-my-first-plog-of-this-website/
 title: 迎接时代的浪潮：我的建站Plog
 date: 2026-09-13
 category: 技术边界
